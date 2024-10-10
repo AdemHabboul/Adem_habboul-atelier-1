@@ -10,9 +10,9 @@ export class VetementService {
 
   constructor() {
     this.vetement = [
-      { idVetement: 1, nomVetement: "PC Asus", prixVetement: 3000.60, dateCreation: new Date("01/14/2011") },
-      { idVetement: 2, nomVetement: "Imprimante Epson", prixVetement: 450, dateCreation: new Date("12/17/2010") },
-      { idVetement: 3, nomVetement: "Tablette Samsung", prixVetement: 900.12, dateCreation: new Date("02/20/2020") },
+      { idVetement: 1, nomVetement: "nike t-shirt", prixVetement: 350, dateCreation: new Date("01/14/2011") },
+      { idVetement: 2, nomVetement: "jordan 4", prixVetement: 450, dateCreation: new Date("12/17/2010") },
+      { idVetement: 3, nomVetement: "gucci hat", prixVetement: 900, dateCreation: new Date("02/20/2020") },
     ];
   }
 
