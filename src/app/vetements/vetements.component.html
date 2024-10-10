@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="card shadow mb-4">
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nom</th>
+              <th>Prix</th>
+              <th>Date Création</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let vetement of vetement"> <!-- Corrected *ngFor directive position -->
+              <td>{{ vetement.idVetement }}</td>
+              <td>{{ vetement.nomVetement }}</td>
+              <td>{{ vetement.prixVetement }}</td>
+              <td>{{ vetement.dateCreation | date:'dd/MM/yyyy' }}</td>
+              <td><a class="btn btn-danger" (click)="supprimerVetement(vetement)">Supprimer</a></td>
+              <td><a class="btn btn-success" [routerLink]="['/updateVetement',vetement.idVetement]">Modifier</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
