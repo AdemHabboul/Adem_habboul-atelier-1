@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Vetement } from '../model/vetement.model';
 import { VetementService } from '../vetement.service';
+import { ActivatedRoute,Router } from '@angular/router';
 
 @Component({
   selector: 'app-vetement',

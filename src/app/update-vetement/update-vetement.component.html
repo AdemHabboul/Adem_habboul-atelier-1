@@ -29,3 +29,11 @@
 </div>
 </form>
 </div>
+<div class="col-sm-4 col-md-4 col-lg-4">
+    <select class="form-control form-control-lg" id="idCat" name="idCat"
+    [(ngModel)]="updatedMarId">
+    <option *ngFor="let mar of marque" [value]="mar.idMar" >
+    {{mar.nomMar}}
+    </option>
+    </select>
+    </div>

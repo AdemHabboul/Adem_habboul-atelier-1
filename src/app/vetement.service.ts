@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Vetement } from './model/vetement.model';
+import { Marque } from './model/marque.model';
 
 @Injectable({
   providedIn: 'root'
@@ -7,12 +8,15 @@ import { Vetement } from './model/vetement.model';
 export class VetementService {
   vetement: Vetement[]; 
   vetements! :Vetement;
+  marques : Marque[];
 
   constructor() {
+    this.marques = [ {idMar : 1, nomMar : "nike"},
+      {idMar : 2, nomMar : "adidas"}];
     this.vetement = [
-      { idVetement: 1, nomVetement: "nike t-shirt", prixVetement: 350, dateCreation: new Date("01/14/2011") },
-      { idVetement: 2, nomVetement: "jordan 4", prixVetement: 450, dateCreation: new Date("12/17/2010") },
-      { idVetement: 3, nomVetement: "gucci hat", prixVetement: 900, dateCreation: new Date("02/20/2020") },
+      { idVetement: 1, nomVetement: "nike t-shirt", prixVetement: 350, dateCreation: new Date("01/14/2011"),marque : {idMar : 1, nomMar : "nike"} },
+      { idVetement: 2, nomVetement: "jordan 4", prixVetement: 450, dateCreation: new Date("12/17/2010"),marque:{idMar:1,nomMar:"nike"} },
+      { idVetement: 3, nomVetement: "air jordan 1 low", prixVetement: 400, dateCreation: new Date("02/20/2020"),marque:{idMar:1,nomMar:"nike"} },
     ];
   }
 
@@ -57,4 +61,14 @@ trierVetement(){
   return 0;
   });
   }
+
+  listeMarques():Marque[] {
+    return this.marques;
+  }
+
+  consulterMarques(id:number): Marque{
+    return this.marques.find(mar => mar.idMar == id)!;
+  }
 }
+
+

@@ -27,5 +27,16 @@
         <button type="submit" (click)="addVetement()"class="btn btn-success">Ajouter</button>
         
         </div>
+
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Marque</label>
+            <select class="form-control form-control-lg" id="idMar" name="idMar"
+            [(ngModel)]="newIdMar">
+             <option *ngFor="let mar of marques" [value]="mar.idMar" >
+             {{mar.nomMar}}
+            </option>
+            </select>
+            </div>
+
         </form>
         </div>
