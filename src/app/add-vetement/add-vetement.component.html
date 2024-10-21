@@ -3,6 +3,14 @@
     <h2>Ajouter un Vetement:</h2>
     </div>
     <form >
+
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label >Email vetement</label>
+            <input type="email" [(ngModel)]="newVetement.mailVetement"
+            name="mailVetement" class="form-control" required>
+            </div>
+
+
         <div class="col-sm-2 col-md-2 col-lg-2">
         <label >ID Vetement</label>
         <input type="text" [(ngModel)]="newVetement.idVetement"

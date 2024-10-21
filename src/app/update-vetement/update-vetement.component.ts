@@ -27,8 +27,13 @@ currentVetement= new Vetement();
   }
   updateVetement()
   {
+    if(/^[a-zA-Z0-9._%+-]+@(gmail\.com|yahoo\.com)$/.test(this.currentVetement.mailVetement) && this.currentVetement.idVetement!=undefined && this.currentVetement.marque.idMar!=undefined && this.currentVetement.nomVetement!=""&& this.currentVetement.dateCreation!=undefined && (this.currentVetement.mailVetement.indexOf("@gmail.com")!=-1 ||this.currentVetement.mailVetement.indexOf("@yahoo.com")!=-1)){
+       
     this.currentVetement.marque=this.vetementService.consulterMarques(this.updatedMarId);
   this.vetementService.updateVetement(this.currentVetement);
   this.router.navigate(['vetement']);
   }
-}
+  else{
+    alert("invalide!! try again");
+  }
+  }}

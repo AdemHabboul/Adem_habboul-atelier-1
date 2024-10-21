@@ -2,7 +2,7 @@
 
     <form class="form-inline">
         <div class="form-group mx-sm-3 mb-2 mt-2">
-            <label for="search">Nom supplement tapant</label>
+            <label for="search">Nom vetement tapant</label>
             <input id="search" class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)" placeholder="Rechercher un supplément...">
         </div>
         <div class="card shadow mb-4">
@@ -25,9 +25,6 @@
                             <td>{{ vetement.prixVetement }}</td>
                             <td>{{ vetement.dateCreation | date:'dd/MM/yyyy' }}</td>
                             <td>{{ vetement.marque.nomMar }}</td>
-                            <!-- Uncomment these lines when functionality is ready -->
-                            <!-- <td><a class="btn btn-danger" (click)="supprimerSupplement(supplement)">Supprimer</a></td> -->
-                            <!-- <td><a class="btn btn-success" [routerLink]="['/updateSupplement', supplement.idSupplement]">Modifier</a></td> -->
                         </tr>
                     </tbody>
                 </table>

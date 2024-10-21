@@ -15,9 +15,9 @@ export class VetementService {
     this.marques = [ {idMar : 1, nomMar : "nike"},
       {idMar : 2, nomMar : "adidas"}];
     this.vetement = [
-      { idVetement: 1, nomVetement: "nike t-shirt", prixVetement: 350, dateCreation: new Date("01/14/2011"),marque : {idMar : 1, nomMar : "nike"} },
-      { idVetement: 2, nomVetement: "jordan 4", prixVetement: 450, dateCreation: new Date("12/17/2010"),marque:{idMar:1,nomMar:"nike"} },
-      { idVetement: 3, nomVetement: "air jordan 1 low", prixVetement: 400, dateCreation: new Date("02/20/2020"),marque:{idMar:1,nomMar:"nike"} },
+      { idVetement: 1, nomVetement: "nike t-shirt", prixVetement: 350, dateCreation: new Date("01/14/2011"),marque : {idMar : 1, nomMar : "nike"},mailVetement:"nike1@gmail.com" },
+      { idVetement: 2, nomVetement: "jordan 4", prixVetement: 450, dateCreation: new Date("12/17/2010"),marque:{idMar:1,nomMar:"nike"}, mailVetement:"nike2@gmail.com" },
+      { idVetement: 3, nomVetement: "air jordan 1 low", prixVetement: 400, dateCreation: new Date("02/20/2020"),marque:{idMar:1,nomMar:"nike"},mailVetement:"nike3@gmail.com" },
     ];
   }
 
@@ -52,12 +52,6 @@ export class VetementService {
     if (index > -1) {
     this.vetement.splice(index, 1);
     }
-    //ou Bien
-    /* this.produits.forEach((cur, index) => {
-    if(prod.idProduit === cur.idProduit) {
-    this.produits.splice(index, 1);
-    }
-    }); */
     }
     consulterVetement(id:number): Vetement{
       return this.vetement.find(p => p.idVetement == id)!;

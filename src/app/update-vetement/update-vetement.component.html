@@ -3,10 +3,17 @@
     <h2>Modifier un Vetement:</h2>
     </div>
     <form >
+
+        <div class="col-sm-4 col-md-4 col-lg-4" >
+            <label >Email vetement</label>
+            <input type="text"[(ngModel)]= "currentVetement.mailVetement"
+            name="mailVetement" class="form-control" required>
+            </div>
+    
     <div hidden class="col-sm-2 col-md-2 col-lg-2">
     <label >ID Vetement</label>
     <input type="text" [(ngModel)]="currentVetement.idVetement"
-    name="idProduit" class="form-control">
+    name="idVetement" class="form-control">
     </div>
     <div class="col-sm-4 col-md-4 col-lg-4" >
     <label >Nom Vetement</label>
