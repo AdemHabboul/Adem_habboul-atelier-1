@@ -1,4 +1,16 @@
 <div class="container">
+
+    <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+        <label>Marque</label>
+        <select class="form-control form-control-lg" id="idMar" name="idMar"
+        [(ngModel)]="IdMar" (change)="onChange()">
+        
+        <option *ngFor="let mar of marques" value="{{mar.idMar}}">
+        {{mar.nomMar}}
+        </option>
+        </select>
+        </div>
+
     <div class="card shadow mb-4">
       <div class="card-body">
         <table class="table table-striped">
@@ -12,7 +24,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let vetement of vetements"> <!-- Corrected *ngFor directive position -->
+            <tr *ngFor="let vetement of vetements">
               <td>{{ vetement.idVetement }}</td>
               <td>{{ vetement.nomVetement }}</td>
               <td>{{ vetement.prixVetement }}</td>
@@ -25,4 +37,3 @@
       </div>
     </div>
   </div>
-  

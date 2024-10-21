@@ -6,13 +6,17 @@ import { VetementComponent } from './vetements/vetements.component';
 import { AddVetementComponent } from './add-vetement/add-vetement.component';
 import { FormsModule } from '@angular/forms';
 import { UpdateVetementComponent } from './update-vetement/update-vetement.component';
+import { RechercheParMarqueComponent } from './recherche-par-marque/recherche-par-marque.component';
+import { RechercherParNomComponent } from './rechercher-par-nom/rechercher-par-nom.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     VetementComponent,
     AddVetementComponent,
-    UpdateVetementComponent
+    UpdateVetementComponent,
+    RechercheParMarqueComponent,
+    RechercherParNomComponent,
   ],
   imports: [
     BrowserModule,

@@ -24,11 +24,7 @@
 (ngModelChange)=" currentVetement.dateCreation= $event" name="dateCreation"
  class="form-control">
 </div>
-<div class="mt-2">
-<button type="submit" (click)="updateVetement()" class="btn btn-success">Modifer</button>
-</div>
-</form>
-</div>
+
 <div class="col-sm-4 col-md-4 col-lg-4">
     <select class="form-control form-control-lg" id="idCat" name="idCat"
     [(ngModel)]="updatedMarId">
@@ -37,3 +33,8 @@
     </option>
     </select>
     </div>
+<div class="mt-2">
+<button type="submit" (click)="updateVetement()" class="btn btn-success">Modifer</button>
+</div>
+</form>
+</div>

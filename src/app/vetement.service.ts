@@ -9,6 +9,7 @@ export class VetementService {
   vetement: Vetement[]; 
   vetements! :Vetement;
   marques : Marque[];
+  vetementsrecherche! : Vetement[];
 
   constructor() {
     this.marques = [ {idMar : 1, nomMar : "nike"},
@@ -27,6 +28,24 @@ export class VetementService {
   ajouterVetement(vet: Vetement) {
     this.vetement.push(vet);
   }
+
+  rechercherParMarque(idMar: number): Vetement[]{
+    this.vetementsrecherche = [];
+    this.vetement.forEach((cur, index) => {
+    if(idMar == cur.marque.idMar) {
+    console.log("cur "+cur);
+    this.vetementsrecherche.push(cur);
+    }
+    });
+    return this.vetementsrecherche;
+    }
+
+    rechercherParNom(nom: string): Vetement[] {
+      return this.vetement.filter(supp => 
+        supp.nomVetement && supp.nomVetement.toLowerCase().includes(nom.toLowerCase())
+      );
+    }
+
   supprimerVetement( vet: Vetement){
     //supprimer le produit prod du tableau produits
     const index = this.vetement.indexOf(vet, 0);

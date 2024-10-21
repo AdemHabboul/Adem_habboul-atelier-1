@@ -9,13 +9,13 @@ import { ActivatedRoute,Router } from '@angular/router';
   styleUrls: ['./vetements.component.css'] // Corrected from styleUrl to styleUrls
 })
 export class VetementComponent implements OnInit {
-  vetement: Vetement[] = []; 
+  vetements: Vetement[] = []; 
 
 
   constructor(private vetementService: VetementService) {}
 
   ngOnInit(): void {
-    this.vetement = this.vetementService.listeVetement(); // Populate on init
+    this.vetements = this.vetementService.listeVetement(); // Populate on init
 
 
 }
