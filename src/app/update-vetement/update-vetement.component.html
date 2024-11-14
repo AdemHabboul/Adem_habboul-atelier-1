@@ -1,47 +1,61 @@
 <div class="container">
     <div>
-    <h2>Modifier un Vetement:</h2>
+      <h2>Modifier un Vetement:</h2>
     </div>
-    <form >
-
-        <div class="col-sm-4 col-md-4 col-lg-4" >
-            <label >Email vetement</label>
-            <input type="text"[(ngModel)]= "currentVetement.mailVetement"
-            name="mailVetement" class="form-control" required>
-            </div>
-    
-    <div hidden class="col-sm-2 col-md-2 col-lg-2">
-    <label >ID Vetement</label>
-    <input type="text" [(ngModel)]="currentVetement.idVetement"
-    name="idVetement" class="form-control">
-    </div>
-    <div class="col-sm-4 col-md-4 col-lg-4" >
-    <label >Nom Vetement</label>
-    <input type="text"[(ngModel)]= "currentVetement.nomVetement"
-    name="nomVetement" class="form-control">
-    </div>
-    <div class="col-sm-2 col-md-2 col-lg-2">
-    <label >Prix Vetement</label>
-    <input type="number" [(ngModel)]= "currentVetement.prixVetement"
-    name="prixVetement" class="form-control">
-    </div>
-    <div class="col-sm-4 col-md-4 col-lg-4">
-        <label >Date création</label>
-<input type="date" [ngModel]="currentVetement.dateCreation | date: 'yyyy-MM-dd'"
-(ngModelChange)=" currentVetement.dateCreation= $event" name="dateCreation"
- class="form-control">
-</div>
-
-<div class="col-sm-4 col-md-4 col-lg-4">
-    <select class="form-control form-control-lg" id="idCat" name="idCat"
-    [(ngModel)]="updatedMarId">
-    <option *ngFor="let mar of marque" [value]="mar.idMar" >
-    {{mar.nomMar}}
-    </option>
-    </select>
-    </div>
-<div class="mt-2">
-<button type="submit" (click)="updateVetement()" class="btn btn-success">Modifer</button>
-</div>
-</form>
-</div>
+    <form [formGroup]="myForm" (ngSubmit)="updateVetement()">
+  
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Email vetement</label>
+        <input type="email" formControlName="mailVetement" class="form-control" />
+        <div *ngIf="myForm.get('mailVetement')?.invalid && myForm.get('mailVetement')?.touched">
+          <small *ngIf="myForm.get('mailVetement')?.errors?.['required']" class="text-danger">Email is required!</small>
+          <small *ngIf="myForm.get('mailVetement')?.errors?.['email']" class="text-danger">Invalid email format!</small>
+        </div>
+      </div>
+  
+      <div hidden class="col-sm-2 col-md-2 col-lg-2">
+        <label>ID Vetement</label>
+        <input type="text" formControlName="idVetement" class="form-control" />
+      </div>
+  
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Nom Vetement</label>
+        <input type="text" formControlName="nomVetement" class="form-control" />
+        <div *ngIf="myForm.get('nomVetement')?.invalid && myForm.get('nomVetement')?.touched">
+          <small *ngIf="myForm.get('nomVetement')?.errors?.['required']" class="text-danger">Name is required!</small>
+          <small *ngIf="myForm.get('nomVetement')?.errors?.['minlength']" class="text-danger">Name must be at least 6 letters long!</small>
+        </div>
+      </div>
+  
+      <div class="col-sm-2 col-md-2 col-lg-2">
+        <label>Prix Vetement</label>
+        <input type="number" formControlName="prixVetement" class="form-control" />
+        <div *ngIf="myForm.get('prixVetement')?.invalid && myForm.get('prixVetement')?.touched">
+          <small *ngIf="myForm.get('prixVetement')?.errors?.['required']" class="text-danger">Price is required.</small>
+        </div>
+      </div>
+  
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Date création</label>
+        <input type="date" formControlName="dateCreation" class="form-control" />
+        <div *ngIf="myForm.get('dateCreation')?.invalid && myForm.get('dateCreation')?.touched">
+          <small *ngIf="myForm.get('dateCreation')?.errors?.['required']" class="text-danger">Date is required.</small>
+        </div>
+      </div>
+  
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Marque</label>
+        <select formControlName="marque" class="form-control form-control-lg">
+          <option *ngFor="let mar of marque" [value]="mar.idMar">{{ mar.nomMar }}</option>
+        </select>
+        <div *ngIf="myForm.get('marque')?.invalid && myForm.get('marque')?.touched">
+          <small *ngIf="myForm.get('marque')?.errors?.['required']" class="text-danger">Brand is required.</small>
+        </div>
+      </div>
+  
+      <div class="mt-2">
+        <button type="submit" [disabled]="myForm.invalid" class="btn btn-success">Modifier</button>
+      </div>
+    </form>
+  </div>
+  

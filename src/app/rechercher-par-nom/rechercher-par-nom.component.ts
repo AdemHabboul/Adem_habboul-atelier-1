@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Vetement } from '../model/vetement.model';
-import { VetementService } from '../vetement.service';
+import { VetementService } from '../services/vetement.service';
 @Component({
   selector: 'app-recherche-par-nom',
   templateUrl: './rechercher-par-nom.component.html',

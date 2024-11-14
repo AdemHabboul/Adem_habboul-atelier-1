@@ -1,6 +1,7 @@
+import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Vetement } from '../model/vetement.model';
-import { VetementService } from '../vetement.service';
+import { VetementService } from '../services/vetement.service';
 import { ActivatedRoute,Router } from '@angular/router';
 
 @Component({
@@ -12,7 +13,7 @@ export class VetementComponent implements OnInit {
   vetements: Vetement[] = []; 
 
 
-  constructor(private vetementService: VetementService) {}
+  constructor(private vetementService: VetementService,public authService:AuthService) {}
 
   ngOnInit(): void {
     this.vetements = this.vetementService.listeVetement(); // Populate on init

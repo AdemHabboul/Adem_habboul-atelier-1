@@ -1,52 +1,69 @@
 <div class="container">
     <div>
-    <h2>Ajouter un Vetement:</h2>
+      <h2>Ajouter un Vetement:</h2>
     </div>
-    <form >
-
-        <div class="col-sm-2 col-md-2 col-lg-2">
-            <label >Email vetement</label>
-            <input type="email" [(ngModel)]="newVetement.mailVetement"
-            name="mailVetement" class="form-control" required>
-            </div>
-
-
-        <div class="col-sm-2 col-md-2 col-lg-2">
-        <label >ID Vetement</label>
-        <input type="text" [(ngModel)]="newVetement.idVetement"
-        name="idProduit" class="form-control">
+  
+    <form [formGroup]="myform" (ngSubmit)="onSubmit()">
+      <div class="col-sm-2 col-md-2 col-lg-2">
+        <label>Email Vetement</label>
+        <input type="email" formControlName="mailVetement" class="form-control" />
+        <div *ngIf="myform.get('mailVetement')?.invalid && myform.get('mailVetement')?.touched">
+          <small *ngIf="myform.get('mailVetement')?.errors?.['required']" class="text-danger">Email is required.</small>
+          <small *ngIf="myform.get('mailVetement')?.errors?.['email']" class="text-danger">Invalid email format.</small>
         </div>
-        <div class="col-sm-4 col-md-4 col-lg-4" >
-        <label >Nom Vetement</label>
-        <input type="text"[(ngModel)]= "newVetement.nomVetement"
-        name="nomProduit" class="form-control">
+      </div>
+  
+      <div class="col-sm-2 col-md-2 col-lg-2">
+        <label>ID Vetement</label>
+        <input type="text" formControlName="idVetement" class="form-control" />
+        <div *ngIf="myform.get('idVetement')?.invalid && myform.get('idVetement')?.touched">
+          <small *ngIf="myform.get('idVetement')?.errors?.['required']" class="text-danger">ID is required.</small>
         </div>
-        <div class="col-sm-2 col-md-2 col-lg-2">
-        <label >Prix Vetement</label>
-        <input type="number" [(ngModel)]= "newVetement.prixVetement"
-        name="prixProduit" class="form-control">
+      </div>
+  
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Nom Vetement</label>
+        <input type="text" formControlName="nomVetement" class="form-control" />
+        <div *ngIf="myform.get('nomVetement')?.invalid && myform.get('nomVetement')?.touched">
+          <small *ngIf="myform.get('nomVetement')?.errors?.['required']" class="text-danger" class="text-danger">Name is required.</small>
+          <small *ngIf="myform.get('nomVetement')?.errors?.['minlength']" class="text-danger" class="text-danger">Name length must be more then 3 letters</small>
         </div>
-        <div class="col-sm-4 col-md-4 col-lg-4">
-        <label >Date création</label>
-        <input type="date" [(ngModel)]= "newVetement.dateCreation"
-        name="dateCreation" class="form-control">
+      </div>
+  
+      <div class="col-sm-2 col-md-2 col-lg-2">
+        <label>Prix Vetement</label>
+        <input type="number" formControlName="prixVetement" class="form-control" />
+        <div *ngIf="myform.get('prixVetement')?.invalid && myform.get('prixVetement')?.touched">
+          <small *ngIf="myform.get('prixVetement')?.errors?.['required']" class="text-danger">Price is required.</small>
+          <small *ngIf="myform.get('prixVetement')?.errors?.['min']" class="text-danger">Price must be greater than zero.</small>
         </div>
-
-        <div class="col-sm-4 col-md-4 col-lg-4">
-            <label>Marque</label>
-            <select class="form-control form-control-lg" id="idMar" name="idMar"
-            [(ngModel)]="newIdMar">
-             <option *ngFor="let mar of marques" [value]="mar.idMar" >
-             {{mar.nomMar}}
-            </option>
-            </select>
-            </div>
-
-        <div class="mt-2">
-        <button type="submit" (click)="addVetement()"class="btn btn-success">Ajouter</button>
-        
+      </div>
+  
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Date Création</label>
+        <input type="date" formControlName="dateCreation" class="form-control" />
+        <div *ngIf="myform.get('dateCreation')?.invalid && myform.get('dateCreation')?.touched">
+          <small *ngIf="myform.get('dateCreation')?.errors?.['required']" class="text-danger">Date is required.</small>
         </div>
-
-      
-
-        </form>
+      </div>
+  
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Marque</label>
+        <select formControlName="marque" class="form-control form-control-lg">
+          <option *ngFor="let mar of marques" [value]="mar.idMar">
+            {{ mar.nomMar }}
+          </option>
+        </select>
+        <div *ngIf="myform.get('marque')?.invalid && myform.get('marque')?.touched">
+          <small *ngIf="myform.get('marque')?.errors?.['required']">Brand is required.</small>
+        </div>
+      </div>
+  
+      <div class="mt-2">
+        <button type="submit" [disabled]="myform.invalid" class="btn btn-success">
+          Ajouter
+        </button>
+      </div>
+    </form>
+  </div>
+  
