@@ -1,0 +1,72 @@
+<div class="container">
+  <div>
+    <h2>Ajouter un Vetement :</h2>
+  </div>
+  <form [formGroup]="myForm">
+
+    <div hidden class="col-sm-2 col-md-2 col-lg-2">
+      <label>ID Vetement</label>
+      <input type="text" formControlName="idVetement" [(ngModel)]="newVetement.idVetement" name="idVetement" class="form-control">
+    </div>
+    <span *ngIf="myForm.controls['idVetement'].hasError('required') && myForm.controls['idVetement'].touched"
+      class="text-danger">
+      ID Vetement est obligatoire
+    </span>
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Nom Vetement</label>
+      <input type="text" formControlName="nomVetement" [(ngModel)]="newVetement.nomVetement" name="nomVetement" class="form-control">
+    </div>
+    <span *ngIf="myForm.controls['nomVetement'].hasError('required') && myForm.controls['nomVetement'].touched"
+      class="text-danger">
+      Nom de Vetement est obligatoire
+    </span>
+    <span *ngIf="myForm.controls['nomVetement'].hasError('minlength') && myForm.controls['nomVetement'].touched"
+      class="text-danger">
+      Le nom de Vetement doit contenir au moins 5 caractères
+    </span>
+
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>Prix Vetement</label>
+      <input type="number" formControlName="prixVetement" [(ngModel)]="newVetement.prixVetement" name="prixVetement"
+        class="form-control">
+    </div>
+    <span *ngIf="myForm.controls['prixVetement'].hasError('required') && myForm.controls['prixVetement'].touched"
+      class="text-danger">
+      Le prix de Vetement est obligatoire
+    </span>
+    <span *ngIf="myForm.controls['prixVetement'].hasError('min') && myForm.controls['prixVetement'].touched"
+      class="text-danger">
+      Le prix de Vetement doit être supérieur ou égal à 0
+    </span>
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Date création</label>
+      <input type="date" formControlName="datedeSortie" [(ngModel)]="newVetement.dateCreation" name="datedeSortie"
+        class="form-control">
+    </div>
+    <span *ngIf="myForm.controls['datedeSortie'].hasError('required') && myForm.controls['datedeSortie'].touched"
+      class="text-danger">
+      La date de création de Vetement est obligatoire
+    </span>
+
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Marque</label>
+      <select class="form-control form-control-lg" id="idmarque" name="idmarque" formControlName="marque"
+        [(ngModel)]="newIdMarque">
+        <option *ngFor="let marque of marques" [value]="marque.idMar">
+          {{marque.nomMar}}
+        </option>
+      </select>
+      <span *ngIf="myForm.controls['marque'].hasError('required') && myForm.controls['marque'].touched"
+        class="text-danger">
+        La marque de Vetement est obligatoire
+      </span>
+    </div>
+
+    <div class="mt-2">
+      <button type="submit" (click)="addVetement()" class="btn btn-success">Ajouter</button>
+    </div>
+  </form>
+</div>
