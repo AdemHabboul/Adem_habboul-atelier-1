@@ -1,0 +1,15 @@
+<!-- update-marque.component.html -->
+
+<form (ngSubmit)="saveMarque()">
+  <div>
+    <label>ID Marque</label>
+    <input type="text" [(ngModel)]="marque.idMar" name="IdMarque" class="form-control w-25" readonly>
+  </div>
+  <div>
+    <label>Nom de la Marque</label>
+    <input type="text" [(ngModel)]="marque.nomMar" name="nomMarque" class="form-control" placeholder="Entrez un nom de marque...">
+  </div>
+  <button type="submit" [disabled]="!marque.nomMar" class="btn btn-success">
+    {{ ajout ? 'Ajouter' : 'Modifier' }}
+  </button>
+</form>
